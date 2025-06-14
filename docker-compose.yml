@@ -1,0 +1,21 @@
+services:
+  api:
+    build: .
+    container_name: teacherbook_api
+    ports:
+      - "8000:8000"
+    environment:
+      - EDUSPARK_API_FALLBACK_URL=${EDUSPARK_API_FALLBACK_URL}
+      - EDUSPARK_API_KEY=${EDUSPARK_API_KEY}
+      - LLAMA_MODEL_PATH=${LLAMA_MODEL_PATH}
+    volumes:
+      - .:/app
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  cli:
+    build: .
+    container_name: teacherbook_cli
+    volumes:
+      - .:/app
+    entrypoint: ["python", "cli/main.py"]
+    # Para usar: docker-compose run cli scaffold --title "..." --description "..." --objectives "..." --level intro

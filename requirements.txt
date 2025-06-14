@@ -1,0 +1,7 @@
+typer
+jinja2
+requests
+fastapi
+uvicorn
+pydantic
+#llama-cpp-python

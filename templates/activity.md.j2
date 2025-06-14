@@ -1,0 +1,11 @@
+{{ title }}
+
+Nivel: {{ level }}
+
+{{ description }}
+
+Objetivos de aprendizaje:
+{% for obj in objectives.split(';') %}- {{ obj.strip() }}
+{% endfor %}
+
+Generado con ❤️ por TeacherSparkBook
